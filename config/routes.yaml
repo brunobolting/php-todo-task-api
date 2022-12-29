@@ -3,3 +3,23 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+index:
+    path: /
+    controller: App\Controller\TaskController::index
+    methods: GET
+
+create_task:
+    path: /task
+    controller: App\Controller\TaskController::createTask
+    methods: POST
+
+get_tasks:
+    path: /task/{id}
+    controller: App\Controller\TaskController::getTask
+    methods: GET
+
+list_tasks:
+    path: /tasks
+    controller: App\Controller\TaskController::listTasks
+    methods: GET

@@ -8,11 +8,11 @@ use DateTimeInterface;
 
 class Task implements EntityInterface
 {
-    readonly IDInterface $id;
+    private readonly IDInterface $id;
 
     private string $description;
 
-    readonly DateTimeInterface $dateCreated;
+    private readonly DateTimeInterface $dateCreated;
 
     private bool $isDone;
 
@@ -31,6 +31,11 @@ class Task implements EntityInterface
     public function toggleDone(): void
     {
         $this->isDone = !$this->isDone;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 
     public function getId(): IDInterface

@@ -23,3 +23,18 @@ list_tasks:
     path: /tasks
     controller: App\Controller\TaskController::listTasks
     methods: GET
+
+update_tasks:
+    path: /task/{id}
+    controller: App\Controller\TaskController::updateTask
+    methods: PATCH
+
+delete_task:
+    path: /task/{id}
+    controller: App\Controller\TaskController::deleteTask
+    methods: DELETE
+
+toggle_done:
+    path: /task/{id}/toggle-done
+    controller: App\Controller\TaskController::toggleDone
+    methods: POST

@@ -6,7 +6,7 @@ namespace App\Domain;
 
 final class Uuid implements IDInterface
 {
-    private function __construct(readonly \Symfony\Component\Uid\Uuid $uuid)
+    private function __construct(private readonly \Symfony\Component\Uid\Uuid $uuid)
     {
     }
 

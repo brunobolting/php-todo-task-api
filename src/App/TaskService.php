@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\App;
 
-use App\Domain\IDInterface;
 use App\Domain\Task;
 use App\Domain\TaskRepositoryInterface;
 use App\Domain\Uuid;
 
 class TaskService
 {
-    public function __construct(readonly TaskRepositoryInterface $repo)
+    public function __construct(private readonly TaskRepositoryInterface $repo)
     {
     }
 

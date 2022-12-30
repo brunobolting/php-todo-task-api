@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class TaskDoctrineRepository implements TaskRepositoryInterface
 {
-    public function __construct(readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly EntityManagerInterface $entityManager)
     {
     }
 

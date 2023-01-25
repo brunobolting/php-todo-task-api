@@ -1,5 +1,5 @@
 # Sobre o projeto
-O projeto foi feito como forma de estudo, o foco foi treinar o uso de Clear Architecture e também testar o uso do DoctrineORM como repositório.
+O projeto foi feito como forma de estudo, o foco foi treinar o uso de Clean Architecture e também testar o uso do DoctrineORM como repositório.
 
 O projeto é relativamente bem simples, basicamente um CRUD com interface REST. As dificuldades que tive com o projeto envolvem mais o framework e o ORM. Dou destaque para duas:
 

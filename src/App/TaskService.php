@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\App;
 
 use App\Domain\Task;
+use App\Domain\TaskNotFoundException;
+use App\Domain\TaskPersistenceException;
 use App\Domain\TaskRepositoryInterface;
 use App\Domain\Uuid;
 
@@ -29,18 +31,37 @@ class TaskService
         return $this->repo->list();
     }
 
+    /**
+     * @throws TaskPersistenceException
+     */
     public function saveTask(Task $task): void
     {
-        $this->repo->save($task);
+        try {
+            $this->repo->save($task);
+        } catch (\Exception $e) {
+            throw new TaskPersistenceException($e->getMessage(), $e->getCode());
+        }
     }
 
+    /**
+     * @throws TaskPersistenceException
+     * @throws TaskNotFoundException
+     */
     public function deleteTask(string $id): void
     {
         $uuid = Uuid::generate($id);
-
-        $this->repo->delete($uuid);
+        try {
+            $this->repo->delete($uuid);
+        } catch (TaskNotFoundException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw new TaskPersistenceException($e->getMessage(), $e->getCode());
+        }
     }
 
+    /**
+     * @throws TaskPersistenceException
+     */
     public function toggleDoneTask(Task $task): Task
     {
         $task->toggleDone();

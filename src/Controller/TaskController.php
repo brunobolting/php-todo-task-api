@@ -46,7 +46,16 @@ class TaskController
 
         $task = Task::create($description)->build();
 
-        $this->taskService->saveTask($task);
+        try {
+            $this->taskService->saveTask($task);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => 'error to save the task',
+                'error' => $e->getMessage(),
+                'data' => []
+            ], Response::HTTP_CREATED);
+        }
 
         return new JsonResponse([
             'success' => true,
@@ -135,7 +144,16 @@ class TaskController
 
         $task->setDescription($description);
 
-        $this->taskService->saveTask($task);
+        try {
+            $this->taskService->saveTask($task);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => 'error to update the task',
+                'error' => $e->getMessage(),
+                'data' => []
+            ], Response::HTTP_CREATED);
+        }
 
         return new JsonResponse([
             'success' => true,
@@ -154,7 +172,16 @@ class TaskController
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        $this->taskService->deleteTask($id);
+        try {
+            $this->taskService->deleteTask($id);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => 'error to delete the task',
+                'error' => $e->getMessage(),
+                'data' => []
+            ], Response::HTTP_CREATED);
+        }
 
         return new JsonResponse([
             'success' => true,
@@ -183,7 +210,16 @@ class TaskController
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $task = $this->taskService->toggleDoneTask($task);
+        try {
+            $task = $this->taskService->toggleDoneTask($task);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => 'error to update the task',
+                'error' => $e->getMessage(),
+                'data' => []
+            ], Response::HTTP_CREATED);
+        }
 
         return new JsonResponse([
             'success' => true,

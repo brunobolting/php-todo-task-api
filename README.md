@@ -10,4 +10,5 @@ O projeto é relativamente bem simples, basicamente um CRUD com interface REST. 
 Para rodar o projeto basta seguir os passos abaixo:
 
 1. `composer install`
+3. `php bin/console doctrine:migrations:migrate`
 2. `php -S localhost:8000 -t public`
